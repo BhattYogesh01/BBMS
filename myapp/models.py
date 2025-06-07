@@ -7,7 +7,9 @@ from datetime import date
 from django.db.models import Q
 from django.core.validators import MinValueValidator
 
-# from cloudinary.models import CloudinaryField
+from cloudinary.models import CloudinaryField
+
+from django.conf import settings
 
 
 
@@ -65,7 +67,8 @@ class CustomUser(AbstractUser):
     blood_group = models.CharField(max_length=4, choices=BLOOD_GROUPS,null=True,blank=True)
     contact_number = models.CharField(max_length=15, null=True, blank=True)
     identity = models.ImageField(null=True,blank=True)
-
+    # identity = CloudinaryField('identity', null=True, blank=True)
+    
     organization_name = models.CharField(max_length=80, null=True,blank=True)
     address = models.TextField(null=True,blank=True)
     fcm_token = models.TextField(default="")  # For firebase notifications
@@ -238,3 +241,16 @@ class PasswordReset(models.Model):
 
     def __str__(self):
         return f"Password reset for {self.user.email} at {self.created_when}"
+
+
+class Notification(models.Model):
+    recipient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    message = models.TextField()
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"To {self.recipient.email}: {self.message[:30]}"
