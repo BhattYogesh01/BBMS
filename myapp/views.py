@@ -498,7 +498,7 @@ def donor_response(request, request_id):
                     is_accepted=True,
                     is_deleted=False
                 )
-                messages.success(request, f"Your BMI is {bmi:.2f}, which is healthy! You have accepted the blood request.")
+                messages.success(request, f"Your BMI is {bmi:.2f}, which is healthy! You are accepted for blood donation.")
         
         elif action == 'reject':
             DonorResponse.objects.create(

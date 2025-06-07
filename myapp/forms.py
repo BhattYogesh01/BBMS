@@ -47,7 +47,7 @@ class ResetPasswordForm(forms.Form):
 
 
 class RegisterForm(forms.ModelForm):
-    contact_number = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Contact Number"}), required=True)
+    contact_number = forms.CharField(widget=forms.NumberInput(attrs={"placeholder": "Contact Number"}), required=True)
     password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Password"}), required=True)
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Confirm Password"}), required=True)
     # identity = forms.FileField(required=True)

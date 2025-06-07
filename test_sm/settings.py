@@ -106,7 +106,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blood_bank',
         'USER': 'root',
-        'PASSWORD': 'suresh',
+        'PASSWORD': 'yourpassword',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -187,9 +187,9 @@ EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=465
 EMAIL_USE_SSL=True
 EMAIL_HOST_USER="everestatnepal4ever@gmail.com"
-EMAIL_HOST_PASSWORD=""
+EMAIL_HOST_PASSWORD="juwm adxs cyxk fyib"
 
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+# EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 
 
